@@ -1,0 +1,278 @@
+{
+    "editor.cursorSmoothCaretAnimation": "off",
+    "leetcode.endpoint": "leetcode-cn",
+    "editor.inlineSuggest.enabled": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "clang-format.style": "google",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+    },
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "files.autoSave": "afterDelay",
+    "git.confirmSync": false,
+    "python.languageServer": "Pylance",
+    "leetcode.workspaceFolder": "/Users/liziyi/Code/leetcode/golang",
+    "leetcode.defaultLanguage": "golang",
+    "vscode-office.openOutline": true,
+    "grunt.autoDetect": "on",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "yaml": false,
+        "cpp": true,
+        "shellscript": true,
+        "go": false,
+        "python": true,
+        "scheme": true
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "go.inferGopath": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "terminal.integrated.fontSize": 13,
+    "cSpell.languageSettings": [],
+    "explorer.confirmDelete": false,
+    "explorer.compactFolders": false,
+    "go.alternateTools": {},
+    "gopls": {},
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "terminal.integrated.gpuAcceleration": "off",
+    "remote.SSH.showLoginTerminal": true,
+    "remote.extensionKind": {
+        "GitHub.copilot": [
+            "ui"
+        ],
+        "github.copilot-chat": "ui"
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "extensions.autoUpdate": "onlySelectedExtensions",
+    "leetcode.hint.configWebviewMarkdown": false,
+    "leetcode.filePath": {
+        "default": {
+            "folder": "",
+            "filename": "${id}.${kebab-case-name}.${ext}"
+        }
+    },
+    "leetcode.showDescription": "Both",
+    "leetcode.hint.commentDescription": false,
+    "leetcode.hint.commandShortcut": false,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "bookmarks.list"
+            ]
+        },
+        {
+            "before": [
+                "1"
+            ],
+            "after": [
+                "$"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "."
+            ],
+            "after": [
+                ">"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "after": [
+                "<"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // 打开文件树
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        // 删除行 快捷方式
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        // tab 相关配置
+        {
+            "before": [
+                "t",
+                "h"
+            ],
+            "commands": [
+                ":tabp"
+            ]
+        },
+        {
+            "before": [
+                "t",
+                "l"
+            ],
+            "commands": [
+                ":tabn"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "lineBreakInsert"
+            ],
+            "silent": true
+        }
+    ],
+    "vim.foldfix": true,
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "("
+            ],
+            "after": [
+                "i("
+            ]
+        }
+    ],
+    "vim.camelCaseMotion.enable": true,
+    "vim.cursorStylePerMode.normal": "line",
+    "vim.leader": "<space>",
+    "hediet.vscode-drawio.resizeImages": null,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false
+    },
+    "vim.sneak": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.statusBarColorControl": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f87",
+        "statusBar.noFolderBackground": "#005f87",
+        "statusBar.debuggingBackground": "#005f87",
+        "statusBar.foreground": "#ffffff",
+        "statusBar.debuggingForeground": "#ffffff"
+    },
+    "[markdown]": {
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.unicodeHighlight.invisibleCharacters": false,
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.wordWrap": "on",
+        "cSpell.fixSpellingWithRenameProvider": true,
+        "cSpell.advanced.feature.useReferenceProviderWithRename": true,
+        "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/",
+        // 添加字典支持
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.fontWeight": "400",
+    "editor.fontSize": 12,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Fira Code,  Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "Menlo, Source Code Pro, monospace",
+    "terminal.integrated.inheritEnv": false,
+    "editor.formatOnSave": true,
+    "clangd.detectExtensionConflicts": false,
+    "lldb.suppressUpdateNotifications": true,
+    "editor.semanticTokenColorCustomizations": {},
+    "C_Cpp.formatting": "clangFormat",
+    "editor.formatOnType": true,
+    "C_Cpp.vcFormat.indent.braces": true,
+    "C_Cpp.vcFormat.indent.caseLabels": true,
+    "C_Cpp.clang_format_fallbackStyle": "BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 120, PointerAlignment: Right, AccessModifierOffset: -2, DerivePointerAlignment: false, SpacesBeforeTrailingComments: 1",
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=numpy"
+    ],
+    "workbench.startupEditor": "none",
+    "todohighlight.isEnable": true,
+    "cmake.showOptionsMovedNotification": false,
+    "redhat.telemetry.enabled": true,
+    "vscode-office.editorTheme": "Github Dark",
+    "terminal.integrated.enableMultiLinePasteWarning": false
+}
