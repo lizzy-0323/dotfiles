@@ -1,4 +1,3 @@
-# 💤 LazyVim
+# This repo contains some of my personal configs.
+such as `zshrc`,`neovim`,`vim`...
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
