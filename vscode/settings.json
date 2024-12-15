@@ -17,11 +17,10 @@
     "clang-format.style": "google",
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": true
     },
     "git.enableSmartCommit": true,
     "git.autofetch": true,
-    "files.autoSave": "afterDelay",
     "git.confirmSync": false,
     "python.languageServer": "Pylance",
     "leetcode.workspaceFolder": "/Users/liziyi/Code/leetcode/golang",
@@ -29,14 +28,14 @@
     "vscode-office.openOutline": true,
     "grunt.autoDetect": "on",
     "github.copilot.enable": {
-        "*": true,
+        "*": false,
         "plaintext": true,
         "markdown": true,
         "scminput": false,
         "yaml": false,
         "cpp": true,
         "shellscript": true,
-        "go": false,
+        "go": true,
         "python": true,
         "scheme": true
     },
@@ -47,8 +46,11 @@
     "cSpell.languageSettings": [],
     "explorer.confirmDelete": false,
     "explorer.compactFolders": false,
-    "go.alternateTools": {},
-    "gopls": {},
+    "go.alternateTools": {
+        "go": "go",
+        "gopls": "gopls",
+        "div": "div",
+    },
     "workbench.colorTheme": "One Dark Pro Darker",
     "terminal.integrated.gpuAcceleration": "off",
     "remote.SSH.showLoginTerminal": true,
@@ -59,7 +61,7 @@
         "github.copilot-chat": "ui"
     },
     "git.openRepositoryInParentFolders": "always",
-    "extensions.autoUpdate": "onlySelectedExtensions",
+    "extensions.autoUpdate": false,
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.filePath": {
         "default": {
@@ -74,6 +76,7 @@
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
+    // insert mode key binding
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -85,7 +88,28 @@
             ]
         }
     ],
+    // normal mode keybinding
     "vim.normalModeKeyBindings": [
+        // 变量符号重命名
+        {
+            "before": [
+                "<leader>",
+                "l",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeWindow"
+            ]
+        },
         {
             "before": [
                 "<leader>",
@@ -110,6 +134,98 @@
             ],
             "after": [
                 "$"
+            ]
+        },
+        // 转到定义
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        // 转到引用
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        // 转到实现
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        // 全局搜索文件名
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        // 全局搜索文字
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        // 保存文件
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        // gh 到行头
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "commands": [
+                "cursorHome"
+            ]
+        },
+        // gl 到行尾
+        {
+            "before": [
+                "g",
+                "l"
+            ],
+            "commands": [
+                "cursorEnd"
+            ]
+        },
+        // ge 到文件尾
+        {
+            "before": [
+                "g",
+                "e"
+            ],
+            "commands": [
+                "cursorBottom"
             ]
         }
     ],
@@ -211,7 +327,6 @@
         "<C-z>": false
     },
     "vim.sneak": true,
-    "vim.camelCaseMotion.enable": true,
     "vim.statusBarColorControl": true,
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
@@ -237,6 +352,7 @@
             "strings": "on",
             "other": "on"
         },
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
     "editor.quickSuggestions": {
         "other": true,
@@ -248,7 +364,7 @@
     "editor.fontLigatures": true,
     "editor.fontFamily": "Fira Code,  Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.fontFamily": "Menlo, Source Code Pro, monospace",
-    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.inheritEnv": true,
     "editor.formatOnSave": true,
     "clangd.detectExtensionConflicts": false,
     "lldb.suppressUpdateNotifications": true,
@@ -273,6 +389,38 @@
     "todohighlight.isEnable": true,
     "cmake.showOptionsMovedNotification": false,
     "redhat.telemetry.enabled": true,
-    "vscode-office.editorTheme": "Github Dark",
-    "terminal.integrated.enableMultiLinePasteWarning": false
+    "vscode-office.editorTheme": "Auto",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "github.copilot.preferredAccount": "github-copilot-sssvip",
+    "[go]": {
+        // "editor.insertSpaces": false,
+        // "editor.formatOnSave": true,
+        // "editor.codeActionsOnSave": {
+        //     "source.organizeImports": "explicit"
+        // }
+    },
+    "debug.onTaskErrors": "debugAnyway",
+    "goOutliner.extendExplorerTab": true,
+    "go.lintTool": "golint",
+    "editor.codeActionsOnSave": {},
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.editorAssociations": {
+        "{git,gitlens}:/**/*.{md,csv,svg}": "default"
+    },
+    "go.playground": {
+        "openbrowser": false
+    },
+    "go.installDependenciesWhenBuilding": true,
+    "go.formatTool": "gofmt",
+    "git.ignoreRebaseWarning": true,
+    "doublebot.chatModel": "DeepSeek V2.5",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "ccls.index.threads": 2,
+    "files.autoSave": "afterDelay",
+    "vim.smartRelativeLine": true
 }

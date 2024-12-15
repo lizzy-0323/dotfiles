@@ -1,0 +1,55 @@
+// 将键绑定放在此文件中以覆盖默认值auto[]
+[
+    {
+        "key": "shift+alt+down",
+        "command": "notebook.cell.copyDown",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "shift+alt+down",
+        "command": "-notebook.cell.copyDown",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "ctrl+=",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    // 在搜索输入框，只需按 esc，就可回到编辑器
+    {
+        "key": "escape",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "inSearchEditor && inputBoxFocus|| inputBoxFocus && searchViewletVisible"
+    },
+    // 在文件浏览界面，只需按 esc，就可回到编辑器
+    {
+        "key": "escape",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // 接受建议
+    {
+        "key": "shift+tab",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    // 下一个建议
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor",
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor",
+    },
+]
