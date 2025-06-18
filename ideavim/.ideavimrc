@@ -1,0 +1,26 @@
+" basic settings "
+set easymotion
+set scrolloff=10
+set incsearch
+set ignorecase 
+set number relativenumber
+
+set keep-english-in-normal
+
+" key binding"
+
+imap jj <Esc>
+nmap ge <action>(GotoNextError)
+nmap gm <action>(MethodUp)
+nmap ga <action>(GotoImplementation)
+nmap <C-S> <action>(SaveAll)
+
+let mapleader = " "
+set which-key
+set notimeout
+
+"easy motion"
+let g:WhichKeyDesc_easymotionKey = "<leader><leader> 快速跳转插件"
+
+nmap s <Plug>(easymotion-bd-n)
+let g:WhichKeyDesc_easymotion = "s 快速跳转"
