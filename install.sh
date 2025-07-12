@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Dotfiles installation script for Mac
-# This script sets up configurations for ideavim, vim, docker, and vscode
+# This script sets up configurations for ideavim, vim, docker, and vscode, zsh
 
 # Set colors for output
 RED="\033[0;31m"
@@ -53,7 +53,7 @@ backup_if_exists() {
 }
 
 # Get script directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Check if running on macOS
 if [[ "$(uname)" != "Darwin" ]]; then
@@ -67,16 +67,16 @@ print_section "Starting dotfiles installation"
 if ! command_exists brew; then
     print_info "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
+
     # Add Homebrew to PATH
     if [[ $(uname -m) == "arm64" ]]; then
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>"$HOME/.zprofile"
         eval "$(/opt/homebrew/bin/brew shellenv)"
     else
-        echo 'eval "$(/usr/local/bin/brew shellenv)"' >> "$HOME/.zprofile"
+        echo 'eval "$(/usr/local/bin/brew shellenv)"' >>"$HOME/.zprofile"
         eval "$(/usr/local/bin/brew shellenv)"
     fi
-    
+
     print_success "Homebrew installed"
 else
     print_info "Homebrew already installed, updating..."
@@ -98,6 +98,30 @@ for package in "${BREW_PACKAGES[@]}"; do
     fi
 done
 
+# Setup ZSH configuration
+print_section "Setting up ZSH configuration"
+# Check if ZSH is the default shell
+if [[ "$SHELL" != "$(which zsh)" ]]; then
+    print_info "Changing default shell to ZSH..."
+    chsh -s "$(which zsh)"
+    print_success "Default shell changed to ZSH"
+else
+    print_info "ZSH is already the default shell"
+fi
+
+# Create .zshrc if it doesn't exist
+ZSHRC="$HOME/.zshrc"
+if [ ! -f "$ZSHRC" ]; then
+    print_info "Creating $ZSHRC..."
+    touch "$ZSHRC"
+    print_success "$ZSHRC created"
+fi
+
+# Copy existing .zshrc if it exists in the dotfiles
+print_info "Copying .zshrc from dotfiles..."
+cp "$SCRIPT_DIR/.zshrc" "$ZSHRC"
+print_success ".zshrc copied from dotfiles"
+
 # Setup Vim configuration
 print_section "Setting up Vim configuration"
 
@@ -107,18 +131,18 @@ create_dir_if_not_exists "$VIM_CONFIG_DIR"
 
 if [ -d "$SCRIPT_DIR/vim" ]; then
     print_info "Copying Vim configuration files..."
-    
+
     # Backup existing .vimrc
     backup_if_exists "$HOME/.vimrc"
-    
+
     # Copy vim configuration files
     cp -r "$SCRIPT_DIR/vim"/* "$VIM_CONFIG_DIR/"
-    
+
     # Create symbolic link for .vimrc if it exists in the dotfiles
     if [ -f "$SCRIPT_DIR/vim/vimrc" ]; then
         ln -sf "$SCRIPT_DIR/vim/vimrc" "$HOME/.vimrc"
     fi
-    
+
     print_success "Vim configuration set up"
 else
     print_error "Vim configuration directory not found in dotfiles"
@@ -133,13 +157,13 @@ create_dir_if_not_exists "$NEOVIM_CONFIG_DIR"
 
 if [ -d "$SCRIPT_DIR/neovim" ]; then
     print_info "Copying Neovim configuration files..."
-    
+
     # Backup existing config
     backup_if_exists "$NEOVIM_CONFIG_DIR"
-    
+
     # Copy neovim configuration files
     cp -r "$SCRIPT_DIR/neovim"/* "$NEOVIM_CONFIG_DIR/"
-    
+
     print_success "Neovim configuration set up"
 else
     print_error "Neovim configuration directory not found in dotfiles"
@@ -150,10 +174,10 @@ print_section "Setting up IdeaVim configuration"
 
 if [ -d "$SCRIPT_DIR/ideavim" ]; then
     print_info "Copying IdeaVim configuration files..."
-    
+
     # Backup existing .ideavimrc
     backup_if_exists "$HOME/.ideavimrc"
-    
+
     # Copy ideavim configuration
     if [ -f "$SCRIPT_DIR/ideavim/.ideavimrc" ]; then
         cp "$SCRIPT_DIR/ideavim/.ideavimrc" "$HOME/.ideavimrc"
@@ -162,7 +186,7 @@ if [ -d "$SCRIPT_DIR/ideavim" ]; then
     else
         print_error "IdeaVim configuration file not found"
     fi
-    
+
     print_success "IdeaVim configuration set up"
 else
     print_error "IdeaVim configuration directory not found in dotfiles"
@@ -177,19 +201,19 @@ create_dir_if_not_exists "$DOCKER_CONFIG_DIR"
 
 if [ -d "$SCRIPT_DIR/docker" ]; then
     print_info "Copying Docker configuration files..."
-    
+
     # Backup existing config.json
     backup_if_exists "$DOCKER_CONFIG_DIR/config.json"
-    
+
     # Copy docker configuration files
     if [ -f "$SCRIPT_DIR/docker/daemon.json" ]; then
         cp "$SCRIPT_DIR/docker/daemon.json" "$DOCKER_CONFIG_DIR/daemon.json"
     fi
-    
+
     if [ -f "$SCRIPT_DIR/docker/config.json" ]; then
         cp "$SCRIPT_DIR/docker/config.json" "$DOCKER_CONFIG_DIR/config.json"
     fi
-    
+
     print_success "Docker configuration set up"
 else
     print_error "Docker configuration directory not found in dotfiles"
@@ -204,45 +228,45 @@ create_dir_if_not_exists "$VSCODE_CONFIG_DIR"
 
 if [ -d "$SCRIPT_DIR/vscode" ]; then
     print_info "Copying VSCode configuration files..."
-    
+
     # Backup existing settings.json and keybindings.json
     backup_if_exists "$VSCODE_CONFIG_DIR/settings.json"
     backup_if_exists "$VSCODE_CONFIG_DIR/keybindings.json"
-    
+
     # Copy vscode configuration files
     if [ -f "$SCRIPT_DIR/vscode/settings.json" ]; then
         cp "$SCRIPT_DIR/vscode/settings.json" "$VSCODE_CONFIG_DIR/settings.json"
     fi
-    
+
     if [ -f "$SCRIPT_DIR/vscode/keybinding.json" ]; then
         cp "$SCRIPT_DIR/vscode/keybinding.json" "$VSCODE_CONFIG_DIR/keybindings.json"
     fi
-    
+
     # Install VSCode extensions
     if command_exists code; then
         print_info "Installing VSCode extensions..."
-        
+
         # Common VSCode extensions
         VSCODE_EXTENSIONS=(
-            "vscodevim.vim"                # Vim emulation
+            "vscodevim.vim"               # Vim emulation
             "ms-vscode.cpptools"          # C/C++ support
             "golang.go"                   # Go support
             "ms-python.python"            # Python support
             "zhuangtongfa.material-theme" # One Dark Pro theme
             "pkief.material-icon-theme"   # Material Icon Theme
         )
-        
+
         for ext in "${VSCODE_EXTENSIONS[@]}"; do
             print_info "Installing VSCode extension: $ext"
             code --install-extension "$ext" || print_error "Failed to install $ext"
         done
-        
+
         print_success "VSCode extensions installed"
     else
         print_error "VSCode command line tool not found. Extensions not installed."
         print_info "To enable the 'code' command, open VSCode, press Cmd+Shift+P, and run 'Shell Command: Install 'code' command in PATH'"
     fi
-    
+
     print_success "VSCode configuration set up"
 else
     print_error "VSCode configuration directory not found in dotfiles"
@@ -251,10 +275,10 @@ fi
 # Setup ZSH configuration (if available)
 if [ -d "$SCRIPT_DIR/zsh" ]; then
     print_section "Setting up ZSH configuration"
-    
+
     # Backup existing .zshrc
     backup_if_exists "$HOME/.zshrc"
-    
+
     # Copy zsh configuration
     if [ -f "$SCRIPT_DIR/zsh/.zshrc" ]; then
         cp "$SCRIPT_DIR/zsh/.zshrc" "$HOME/.zshrc"
